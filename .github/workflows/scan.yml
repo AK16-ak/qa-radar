@@ -1,0 +1,43 @@
+name: scan
+
+on:
+  schedule:
+    - cron: "9,29,49 * * * *"   # every ~20 minutes
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run QA Radar scan
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+        run: python main.py
+
+      - name: Commit updated seen state
+        run: |
+          git config user.name "qa-radar[bot]"
+          git config user.email "bot@qa-radar"
+          git add state/seen.json
+          if git diff --cached --quiet; then
+            echo "No new jobs seen — nothing to commit."
+          else
+            for i in 1 2 3; do
+              git pull --rebase origin main && break
+              sleep 5
+            done
+            git commit -m "update seen state [skip ci]"
+            git push
+          fi

@@ -1,0 +1,179 @@
+# QA Radar configuration — tailored for QA Automation / SDET / Test Engineering roles.
+# Edit freely — no code changes needed.
+
+# ----------------------------------------------------------------------------
+# WATCHLIST: companies whose careers pages (via their ATS) you want to monitor.
+# Find a company's ATS by visiting its careers page and checking the URL:
+#   boards.greenhouse.io/<slug>   -> put <slug> under greenhouse
+#   jobs.lever.co/<slug>          -> put <slug> under lever
+#   jobs.ashbyhq.com/<slug>       -> put <slug> under ashby
+# ----------------------------------------------------------------------------
+watchlist:
+  greenhouse:
+    - postman           # API testing leader, India/global
+    - phonepe           # India fintech
+    - groww             # India fintech
+    - druva             # India/global
+    - netskope          # India/global
+    - rubrik
+    - atlassian         # Strong QA culture
+    - stripe
+    - databricks
+    - coinbase
+    - pinterest
+    - gitlab
+    - elastic
+    - mongodb
+    - cloudflare
+    - twilio
+    - datadog
+    - samsara
+    - discord
+    - airtable
+    - figma
+    - reddit
+    - instacart
+    - roblox
+    - gusto
+  lever:
+    - cred              # India fintech
+    - meesho            # India e-commerce
+    - epifi             # India (Fi Money)
+    - zeta              # India fintech
+    - browserstack      # Testing platform, India
+  ashby:
+    - sarvam            # India (Sarvam AI)
+    - perplexity
+    - linear
+    - vercel
+    - openai
+    - notion
+    - cursor            # Anysphere
+    - ramp
+    - cohere
+    - watershed
+    - sierra
+  smartrecruiters:
+    - Wise
+    - Visa
+    - SAP
+
+# ----------------------------------------------------------------------------
+# DISCOVERY: broad search across free job APIs (beyond your watchlist).
+# Adzuna needs free keys (ADZUNA_APP_ID / ADZUNA_APP_KEY as GitHub Secrets);
+# if not set, Adzuna is skipped automatically.
+# ----------------------------------------------------------------------------
+discovery:
+  enabled: true
+  queries:
+    - "sdet"
+    - "qa automation engineer"
+    - "test automation engineer"
+    - "quality assurance engineer"
+    - "automation tester"
+    - "qa engineer"
+  remotive_search: "qa"
+  remoteok: true
+  arbeitnow: true
+  jobicy_tags:
+    - qa
+    - testing
+    - automation
+  himalayas: true
+  himalayas_limit: 50
+  themuse:
+    enabled: true
+    pages: 3
+    categories:
+      - "Software Engineering"
+    locations: []
+
+# ----------------------------------------------------------------------------
+# FILTERS (case-insensitive, word-boundary aware — "qa" != "aqua").
+# A job is sent only if its title matches an include keyword AND no exclude one.
+# ----------------------------------------------------------------------------
+include_keywords:
+  - sdet
+  - qa
+  - qa engineer
+  - qa automation
+  - qa automation engineer
+  - test automation
+  - test automation engineer
+  - automation engineer
+  - automation tester
+  - quality assurance
+  - quality assurance engineer
+  - quality engineer
+  - test engineer
+  - testing engineer
+  - software test engineer
+  - software tester
+  - software quality
+  - selenium
+  - cypress
+  - playwright
+  - appium
+  - performance test
+  - performance engineer
+  - api testing
+  - api test engineer
+  - test analyst
+  - test specialist
+  - automation developer
+  - automation specialist
+  - test development
+  - software development engineer in test
+
+exclude_keywords:
+  - senior staff
+  - staff
+  - principal
+  - architect
+  - lead
+  - manager
+  - director
+  - head of
+  - vp
+  - vice president
+  - founding
+  - intern
+  - internship
+  - trainee
+  - apprentice
+  - frontend developer
+  - backend developer
+  - fullstack developer
+  - data scientist
+  - data analyst
+  - machine learning
+  - ml engineer
+  - support engineer
+  - sales
+  - recruiter
+  - designer
+  - product manager
+  - devops engineer
+  - sre
+  - site reliability
+  - network engineer
+  - hardware
+
+# Locations to flag with a star and (optionally) hard-filter on.
+priority_locations:
+  - bengaluru
+  - bangalore
+  - hyderabad
+  - pune
+  - gurugram
+  - gurgaon
+  - noida
+  - delhi
+  - ncr
+  - mumbai
+  - chennai
+  - remote
+
+# If true, ONLY priority_locations pass. Default false = allow everywhere,
+# just tag priority roles with a star.
+strict_location: false
