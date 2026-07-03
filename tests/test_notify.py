@@ -28,7 +28,7 @@ def test_format_job_salary():
 def test_format_batch():
     items = [(_job("SDET"), True), (_job("QA Engineer"), False)]
     text = format_batch(items)
-    assert "2 new QA/SDET job(s)" in text
+    assert "2 new SDET/Automation job(s)" in text
     assert "SDET" in text
     assert "QA Engineer" in text
 

@@ -83,7 +83,7 @@ def main():
         return
 
     token, chat = os.getenv("TELEGRAM_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
-    header = f"\U0001F6A8 {len(selected)} new QA/SDET job(s):"
+    header = f"\U0001F6A8 {len(selected)} new SDET/Automation job(s):"
     all_sent = send_telegram(token, chat, header)
     for m in messages:
         time.sleep(1)

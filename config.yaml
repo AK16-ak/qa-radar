@@ -1,12 +1,8 @@
-# QA Radar configuration — tailored for QA Automation / SDET / Test Engineering roles.
+# QA Radar — SDET / Automation Testing jobs in India + Remote.
 # Edit freely — no code changes needed.
 
 # ----------------------------------------------------------------------------
 # WATCHLIST: companies whose careers pages (via their ATS) you want to monitor.
-# Find a company's ATS by visiting its careers page and checking the URL:
-#   boards.greenhouse.io/<slug>   -> put <slug> under greenhouse
-#   jobs.lever.co/<slug>          -> put <slug> under lever
-#   jobs.ashbyhq.com/<slug>       -> put <slug> under ashby
 # ----------------------------------------------------------------------------
 watchlist:
   greenhouse:
@@ -66,19 +62,17 @@ watchlist:
 discovery:
   enabled: true
   queries:
+    - "sdet india"
+    - "test automation engineer india"
+    - "automation tester india"
     - "sdet"
-    - "qa automation engineer"
     - "test automation engineer"
-    - "quality assurance engineer"
-    - "automation tester"
-    - "qa engineer"
-  remotive_search: "qa"
+  remotive_search: "sdet"
   remoteok: true
   arbeitnow: true
   jobicy_tags:
-    - qa
-    - testing
     - automation
+    - testing
   himalayas: true
   himalayas_limit: 50
   themuse:
@@ -86,43 +80,24 @@ discovery:
     pages: 3
     categories:
       - "Software Engineering"
-    locations: []
+    locations:
+      - "Bengaluru, India"
 
 # ----------------------------------------------------------------------------
-# FILTERS (case-insensitive, word-boundary aware — "qa" != "aqua").
-# A job is sent only if its title matches an include keyword AND no exclude one.
+# FILTERS — title must match an include keyword AND location must be in
+# allowed Indian cities or Remote. Word-boundary aware ("sdet" != "sdetail").
 # ----------------------------------------------------------------------------
 include_keywords:
   - sdet
-  - qa
-  - qa engineer
-  - qa automation
-  - qa automation engineer
   - test automation
   - test automation engineer
   - automation engineer
   - automation tester
-  - quality assurance
-  - quality assurance engineer
-  - quality engineer
-  - test engineer
-  - testing engineer
-  - software test engineer
-  - software tester
-  - software quality
+  - automation testing
   - selenium
   - cypress
   - playwright
   - appium
-  - performance test
-  - performance engineer
-  - api testing
-  - api test engineer
-  - test analyst
-  - test specialist
-  - automation developer
-  - automation specialist
-  - test development
   - software development engineer in test
 
 exclude_keywords:
@@ -159,21 +134,19 @@ exclude_keywords:
   - network engineer
   - hardware
 
-# Locations to flag with a star and (optionally) hard-filter on.
-priority_locations:
-  - bengaluru
-  - bangalore
-  - hyderabad
-  - pune
+# Allowed locations — jobs MUST be in one of these cities or Remote.
+# The filter also accepts any location containing "india".
+allowed_locations:
   - gurugram
   - gurgaon
-  - noida
+  - pune
+  - hyderabad
+  - bengaluru
+  - bangalore
   - delhi
-  - ncr
-  - mumbai
-  - chennai
+  - new delhi
+  - noida
   - remote
 
-# If true, ONLY priority_locations pass. Default false = allow everywhere,
-# just tag priority roles with a star.
-strict_location: false
+# Strict mode ON — only allowed locations pass. Jobs in other cities are dropped.
+strict_location: true

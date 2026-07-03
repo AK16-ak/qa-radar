@@ -19,7 +19,7 @@ def format_job(job: Job, priority: bool) -> str:
 
 def format_batch(items: List[Tuple[Job, bool]]) -> str:
     blocks = [format_job(j, p) for j, p in items]
-    header = f"\U0001F6A8 {len(items)} new QA/SDET job(s):\n\n"
+    header = f"\U0001F6A8 {len(items)} new SDET/Automation job(s):\n\n"
     return header + "\n\n".join(blocks)
 
 
