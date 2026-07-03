@@ -146,6 +146,7 @@ allowed_locations:
   - delhi
   - new delhi
   - noida
+  - mumbai
   - remote
 
 # Strict mode ON — only allowed locations pass. Jobs in other cities are dropped.
