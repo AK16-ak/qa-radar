@@ -1,0 +1,65 @@
+personal:
+  name: "Anubhav Kaushik"
+  phone: "+91 9548709074"
+  email: "anubhav16kaushik@gmail.com"
+  linkedin: "https://linkedin.com/in/anubhav-kaushik"
+  total_experience_years: 3
+
+summary: >
+  Results-driven SDET with 3 years of experience in building and maintaining
+  test automation frameworks using Java, Selenium, TestNG, and Rest Assured.
+  Proven track record of automating 150+ test cases, integrating CI/CD pipelines,
+  and collaborating with cross-functional teams in Agile environments to ensure
+  software quality and reliability.
+
+education:
+  - degree: "Bachelor of Engineering in Computer Science & Engineering"
+    institution: "Chandigarh University, Punjab, India"
+    duration: "July 2019 - June 2023"
+
+experience:
+  - company: "PhonePe"
+    role: "Software Engineer, Quality"
+    location: "Pune, India"
+    duration: "July 2025 – Current"
+    bullets:
+      - "Integrated complex test scenarios into the backend automation framework using Java, Rest Assured, and TestNG, enabling early bug detection in CI pipelines."
+      - "Executed rigorous end-to-end testing of all functional features, working closely with development and product teams to ensure comprehensive test coverage."
+
+  - company: "Cars24"
+    role: "SDET-1"
+    location: "Gurugram, India"
+    duration: "December 2024 – June 2025"
+    bullets:
+      - "Developed a UI test automation framework using Selenium, Java, and TestNG, automating over 70 test cases and integrating Jenkins for daily automated runs."
+      - "Enhanced reporting with Allure and implemented structured logging for efficient defect analysis and root cause identification."
+      - "Collaborated with cross-functional teams to author and manage test plans and cases, ensuring quality throughout agile development cycles."
+
+  - company: "Finastra"
+    role: "Associate QA Engineer"
+    location: "Pune, India"
+    duration: "September 2023 – December 2024"
+    bullets:
+      - "Automated 80 manual test cases using SoapUI, leading to significant reduction in manual testing time and improved efficiency."
+      - "Leveraged solid understanding in high-value payments, gaining in-depth knowledge of SWIFT MT103, MT202 and Fed10 payment flows and processing."
+
+skills:
+  programming_languages: ["Java", "Python", "C++"]
+  frameworks: ["Selenium", "TestNG", "Cucumber", "Rest Assured"]
+  tools: ["Jenkins", "Jira", "SoapUI", "Git", "GitHub", "Postman", "Allure", "Maven"]
+  testing_types: ["Functional Testing", "Regression Testing", "Sanity Testing", "API Testing", "Smoke Testing", "System Testing", "Exploratory Testing"]
+  methodologies: ["Agile", "Scrum", "BDD", "POM", "Data-Driven Testing"]
+  databases: ["MySQL"]
+
+projects:
+  - name: "Automation Testing Project for Airline Reservation System"
+    bullets:
+      - "Developed and executed automated test scripts using Selenium with Java for an airline reservation system."
+      - "Created detailed test scenarios and authored test cases for key functionalities including login, logout, flight search, seat selection, and baggage checking."
+      - "Implemented the Page Object Model (POM) design pattern in Java to enhance test maintenance and reduce code duplication."
+      - "Utilized TestNG for execution, reporting, and managing test suites."
+
+certifications:
+  - "PCAP: Programming Essentials in Python by Cisco Networking Academy"
+  - "Algorithm Toolbox from Coursera"
+  - "Crash Course on Python from Coursera"

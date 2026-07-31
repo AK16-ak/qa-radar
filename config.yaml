@@ -151,3 +151,13 @@ allowed_locations:
 
 # Strict mode ON — only allowed locations pass. Jobs in other cities are dropped.
 strict_location: true
+
+# ----------------------------------------------------------------------------
+# RESUME: Auto-tailored resume generation per job.
+# Set enabled: true to generate ATS-optimized PDFs for matching jobs.
+# ----------------------------------------------------------------------------
+resume:
+  enabled: true
+  experience_years: 3         # Your total years of experience
+  max_target_years: 6         # Max YOE you'll target (skip jobs asking more)
+  max_resumes_per_run: 10     # Limit PDFs per run to avoid Actions timeout
