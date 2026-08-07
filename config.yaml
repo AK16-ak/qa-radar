@@ -37,6 +37,7 @@ watchlist:
     - epifi             # India (Fi Money)
     - zeta              # India fintech
     - browserstack      # Testing platform, India
+    - paytm             # India fintech
   ashby:
     - sarvam            # India (Sarvam AI)
     - perplexity
@@ -53,6 +54,8 @@ watchlist:
     - Wise
     - Visa
     - SAP
+    - Freshworks        # India SaaS — 157 live jobs
+    - SWIGGY            # India food delivery
 
 # ----------------------------------------------------------------------------
 # DISCOVERY: broad search across free job APIs (beyond your watchlist).
@@ -82,6 +85,73 @@ discovery:
       - "Software Engineering"
     locations:
       - "Bengaluru, India"
+
+  # --- New India-focused sources (all free, no API keys) ---
+
+  ycombinator:
+    enabled: true
+    queries:
+      - "sdet"
+      - "test automation"
+      - "quality engineer"
+      - "automation engineer"
+
+  wellfound:
+    enabled: true
+    queries:
+      - "sdet"
+      - "test automation"
+      - "quality engineer"
+
+  google_careers:
+    enabled: true
+    location: "India"
+    queries:
+      - "sdet"
+      - "test automation"
+      - "software engineer in test"
+
+  workday:
+    companies:
+      - name: Amazon
+        tenant: amazon
+        site: AmazonJobs
+        wd_version: 5
+        queries: ["sdet", "test automation", "quality engineer"]
+      - name: Microsoft
+        tenant: microsoft
+        site: microsoft
+        wd_version: 5
+        queries: ["sdet", "test automation", "quality engineer"]
+      - name: Salesforce
+        tenant: salesforce
+        site: External
+        wd_version: 5
+        queries: ["sdet", "test automation"]
+      - name: Netflix
+        tenant: netflix
+        site: External
+        wd_version: 5
+        queries: ["sdet", "test automation"]
+      - name: Uber
+        tenant: uber
+        site: universalSearch
+        wd_version: 5
+        queries: ["sdet", "test automation", "quality engineer"]
+      - name: Adobe
+        tenant: adobeinternals
+        site: External
+        wd_version: 5
+        queries: ["sdet", "test automation"]
+
+  # LinkedIn via RapidAPI (free tier: ~5-10 req/month, $0 charges)
+  # Add RAPIDAPI_KEY to GitHub Secrets if you want LinkedIn results.
+  # If limit exceeded, gracefully skips — no charges on free plan.
+  linkedin:
+    enabled: true
+    queries:
+      - "sdet india"
+      - "test automation engineer india"
 
 # ----------------------------------------------------------------------------
 # FILTERS — title must match an include keyword AND location must be in

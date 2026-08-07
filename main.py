@@ -11,6 +11,7 @@ from notify import (chunk_messages, send_telegram, send_telegram_document,
                     format_job_with_ats)
 from sources import greenhouse, lever, ashby, adzuna, remotive
 from sources import smartrecruiters, remoteok, themuse, jobicy, arbeitnow, himalayas
+from sources import ycombinator, wellfound, workday, google_careers, linkedin
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("qa-radar")
@@ -46,6 +47,24 @@ def collect(cfg) -> List[Job]:
             jobs += themuse.fetch(muse.get("pages", 3),
                                   muse.get("categories"),
                                   muse.get("locations"))
+        # --- New India-focused sources ---
+        if discovery.get("ycombinator", {}).get("enabled", True):
+            yc_queries = discovery.get("ycombinator", {}).get("queries")
+            jobs += ycombinator.fetch(yc_queries)
+        if discovery.get("wellfound", {}).get("enabled", True):
+            wf_queries = discovery.get("wellfound", {}).get("queries")
+            jobs += wellfound.fetch(wf_queries)
+        if discovery.get("google_careers", {}).get("enabled", True):
+            gc_queries = discovery.get("google_careers", {}).get("queries")
+            gc_location = discovery.get("google_careers", {}).get("location", "India")
+            jobs += google_careers.fetch(gc_queries, gc_location)
+        wd_companies = discovery.get("workday", {}).get("companies", [])
+        if wd_companies:
+            jobs += workday.fetch(wd_companies)
+        li_key = os.getenv("RAPIDAPI_KEY")
+        if li_key and discovery.get("linkedin", {}).get("enabled", True):
+            li_queries = discovery.get("linkedin", {}).get("queries")
+            jobs += linkedin.fetch(li_key, li_queries)
     return jobs
 
 
