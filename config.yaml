@@ -153,6 +153,20 @@ discovery:
       - "sdet india"
       - "test automation engineer india"
 
+  # Bright Data SERP API — Google Jobs (free tier: 5,000 req/month)
+  # Aggregates LinkedIn, Naukri, Indeed, Glassdoor & Indian job boards.
+  # Sign up: https://brightdata.com/cp/start (no credit card needed)
+  # Create SERP API zone → get API key and zone name.
+  # Add BRIGHTDATA_API_KEY and BRIGHTDATA_ZONE to GitHub Secrets.
+  brightdata:
+    enabled: true
+    queries:
+      - "sdet india"
+      - "test automation engineer india"
+      - "automation tester bengaluru"
+      - "sdet pune"
+      - "qa automation engineer hyderabad"
+
 # ----------------------------------------------------------------------------
 # FILTERS — title must match an include keyword AND location must be in
 # allowed Indian cities or Remote. Word-boundary aware ("sdet" != "sdetail").

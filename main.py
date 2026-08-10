@@ -12,6 +12,7 @@ from notify import (chunk_messages, send_telegram, send_telegram_document,
 from sources import greenhouse, lever, ashby, adzuna, remotive
 from sources import smartrecruiters, remoteok, themuse, jobicy, arbeitnow, himalayas
 from sources import ycombinator, wellfound, workday, google_careers, linkedin
+from sources import brightdata
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("qa-radar")
@@ -65,6 +66,12 @@ def collect(cfg) -> List[Job]:
         if li_key and discovery.get("linkedin", {}).get("enabled", True):
             li_queries = discovery.get("linkedin", {}).get("queries")
             jobs += linkedin.fetch(li_key, li_queries)
+        # Bright Data SERP API (Google Jobs) — free 5,000 req/month
+        bd_key = os.getenv("BRIGHTDATA_API_KEY")
+        bd_zone = os.getenv("BRIGHTDATA_ZONE")
+        if bd_key and bd_zone and discovery.get("brightdata", {}).get("enabled", True):
+            bd_queries = discovery.get("brightdata", {}).get("queries")
+            jobs += brightdata.fetch(bd_key, bd_zone, bd_queries)
     return jobs
 
 
