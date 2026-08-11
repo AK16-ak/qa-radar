@@ -70,8 +70,11 @@ def collect(cfg) -> List[Job]:
         bd_key = os.getenv("BRIGHTDATA_API_KEY")
         bd_zone = os.getenv("BRIGHTDATA_ZONE")
         if bd_key and bd_zone and discovery.get("brightdata", {}).get("enabled", True):
-            bd_queries = discovery.get("brightdata", {}).get("queries")
-            jobs += brightdata.fetch(bd_key, bd_zone, bd_queries)
+            bd_cfg = discovery.get("brightdata", {})
+            bd_queries = bd_cfg.get("queries")
+            bd_max = bd_cfg.get("max_queries_per_run", 2)
+            jobs += brightdata.fetch(bd_key, bd_zone, bd_queries,
+                                     max_queries_per_run=bd_max)
     return jobs
 
 

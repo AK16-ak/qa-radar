@@ -76,8 +76,11 @@ def parse_google_jobs(html_or_json, query: str) -> List[Job]:
 
 
 def fetch(api_key: str, zone: str, queries: List[str] = None,
-          country: str = "in") -> List[Job]:
-    """Search Google Jobs via Bright Data SERP API."""
+          country: str = "in", max_queries_per_run: int = 5) -> List[Job]:
+    """Search Google Jobs via Bright Data SERP API.
+    Rotates through queries using time-based selection to maximize
+    coverage within free tier limits (5,000 req/month).
+    """
     if not api_key or not zone:
         return []
 
@@ -88,6 +91,17 @@ def fetch(api_key: str, zone: str, queries: List[str] = None,
             "automation tester india",
         ]
 
+    # Rotate: pick a subset of queries per run based on current hour
+    # This distributes all queries across the day evenly
+    import time
+    current_slot = int(time.time() // 1200) % len(queries)  # 20-min slots
+    selected = []
+    for i in range(max_queries_per_run):
+        idx = (current_slot + i) % len(queries)
+        if queries[idx] not in selected:
+            selected.append(queries[idx])
+    log.info("brightdata: running %d/%d queries this slot", len(selected), len(queries))
+
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}",
@@ -95,7 +109,7 @@ def fetch(api_key: str, zone: str, queries: List[str] = None,
 
     all_jobs: List[Job] = []
 
-    for query in queries:
+    for query in selected:
         def _fetch(q=query):
             # Google Jobs URL: use ibp=htl;jobs for jobs search
             search_q = q.replace(" ", "+")

@@ -158,14 +158,41 @@ discovery:
   # Sign up: https://brightdata.com/cp/start (no credit card needed)
   # Create SERP API zone → get API key and zone name.
   # Add BRIGHTDATA_API_KEY and BRIGHTDATA_ZONE to GitHub Secrets.
+  # Rotation: picks max_queries_per_run from the pool each 20-min slot.
+  # Math: 2 queries/run × 72 runs/day × 30 days = 4,320 < 5,000 free
   brightdata:
     enabled: true
+    max_queries_per_run: 2    # Stay within free tier (5K/month)
     queries:
+      # Core SDET titles
       - "sdet india"
-      - "test automation engineer india"
-      - "automation tester bengaluru"
+      - "sdet bangalore"
       - "sdet pune"
-      - "qa automation engineer hyderabad"
+      - "sdet hyderabad"
+      - "sdet gurgaon"
+      - "sdet noida"
+      - "sdet mumbai"
+      # Alternate titles (same role, different names)
+      - "software engineer in test india"
+      - "software engineer in quality india"
+      - "software development engineer in test india"
+      - "test automation engineer india"
+      - "test automation engineer bangalore"
+      - "automation test engineer india"
+      - "qa automation engineer india"
+      - "qa automation engineer pune"
+      # Broader automation roles
+      - "automation tester india"
+      - "selenium java automation india"
+      - "playwright automation engineer india"
+      - "appium automation engineer india"
+      - "api automation engineer india"
+      # Senior level
+      - "senior sdet india"
+      - "senior test automation engineer india"
+      # Framework/tool specific
+      - "cypress automation tester india"
+      - "quality engineer automation india"
 
 # ----------------------------------------------------------------------------
 # FILTERS — title must match an include keyword AND location must be in
@@ -183,6 +210,13 @@ include_keywords:
   - playwright
   - appium
   - software development engineer in test
+  - software engineer in test
+  - software engineer in quality
+  - quality engineer
+  - qa engineer
+  - qa automation
+  - api automation
+  - test engineer
 
 exclude_keywords:
   - senior staff
